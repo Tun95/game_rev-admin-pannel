@@ -33,7 +33,7 @@ function Users() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`${request}/api/users"`);
+        const { data } = await axios.get(`${request}/api/users`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
