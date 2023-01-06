@@ -35,3 +35,11 @@
     }
   }
 }
+/*======= MEDIA QUERIES (MEDIUM DEVICES) =======*/
+@media screen and (max-width: 600px) {
+  .login {
+    width: 100%;
+    position: relative;
+    right: 30px;
+  }
+}
