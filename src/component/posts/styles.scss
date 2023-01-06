@@ -1,0 +1,272 @@
+#starField {
+  color: var(--color-red);
+  font-size: 30px;
+  position: relative;
+}
+.post_list {
+  padding: 20px;
+  .post_list_box {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    height: 700px;
+    background-color: #fff;
+    h2 {
+      color: var(--color-ash);
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      .create_btn {
+        i {
+          font-size: 40px;
+          color: green;
+        }
+      }
+    }
+    .datatable {
+      height: 580px;
+      padding: 20px;
+
+      .cellWidthImg {
+        display: flex;
+        align-items: center;
+
+        .cellImg {
+          width: 32px;
+          height: 32px;
+          object-fit: cover;
+          margin-right: 20px;
+        }
+      }
+      .cellWithStatus {
+        padding: 5px;
+        border-radius: 5px;
+
+        &.active {
+          color: green;
+          background-color: rgba(0, 128, 0, 0.151);
+        }
+        &.pending {
+          color: goldenrod;
+          background-color: rgba(189, 189, 3, 0.103);
+        }
+        &.passive {
+          color: red;
+          background-color: rgba(255, 0, 0, 0.2);
+        }
+      }
+      .cellAction {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .viewButton {
+          padding: 2px 5px;
+          border-radius: 5px;
+          color: darkblue;
+          border: 1px dotted rgba(0, 0, 139, 0.596);
+          cursor: pointer;
+        }
+        .deleteButton {
+          padding: 2px 5px;
+          border-radius: 5px;
+          color: crimson;
+          border: 1px dotted rgba(220, 20, 60, 0.6);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.post_edit {
+  padding: 20px;
+  .sections {
+    .star {
+      font-size: 20px;
+    }
+
+    input {
+      border: 2px solid var(--color-light);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .cards {
+      position: relative;
+      padding: 20px;
+
+      background-color: var(--color-white);
+      -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+      box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+      img {
+        margin-right: 10px;
+      }
+      .img {
+        label {
+          .fa-solid {
+            font-size: 30px;
+            cursor: pointer;
+            color: var(--color-ash);
+          }
+        }
+      }
+      label {
+        font-weight: 600;
+        color: var(--color-ash);
+      }
+    }
+    .box_1 {
+      .edit_btn {
+        position: absolute;
+        right: 0;
+        top: -2px;
+        i {
+          font-size: 40px;
+          color: green;
+          padding: 10px;
+        }
+      }
+      img {
+        width: 250px;
+        height: 250px;
+      }
+    }
+    .box_2 {
+      img {
+        width: 308px;
+        height: 110px;
+      }
+    }
+    .top {
+      display: grid;
+      input {
+        width: 80%;
+      }
+    }
+    .section_2 {
+      margin-top: 20px;
+      .cards {
+        height: 100%;
+        .input_form {
+          display: grid;
+          padding-right: 25px;
+          input {
+            width: 100%;
+          }
+
+          #formControl {
+            width: 200px;
+          }
+        }
+        .input_lower {
+          margin-top: 5px;
+        }
+        .desc_box {
+          list-style: circle;
+          margin-top: 20px;
+          .editor {
+            min-height: 400px;
+          }
+        }
+      }
+      .lower_section_2 {
+        .grid_layout {
+          display: grid;
+          .label_upload {
+            height: 100%;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            i {
+              font-size: 25px;
+              cursor: pointer;
+            }
+            label {
+              margin-right: 10px;
+            }
+          }
+          input {
+            height: 10px;
+            width: 200px;
+          }
+          .top_input {
+            margin-top: 20px;
+          }
+          .grid_map {
+            img {
+              width: 50px;
+              margin-bottom: 10px;
+            }
+            .fa-trash-can {
+              color: var(--color-red);
+              margin-left: 10px;
+              cursor: pointer;
+            }
+          }
+        }
+        .btn_buttom {
+          position: absolute;
+          right: 0;
+          bottom: 10px;
+          margin-right: 20px;
+          button {
+            background-color: green;
+            color: var(--color-white);
+            width: 300px;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+          }
+          .update {
+            background-color: var(--color-hover);
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*======= MEDIA QUERIES (MEDIUM DEVICES) =======*/
+@media screen and (max-width: 800px) {
+  .post_edit {
+    .sections {
+      .top_input {
+        margin-top: 20px;
+      }
+      .section_2 {
+        .cards {
+          .input_form {
+            display: grid;
+
+            input {
+              width: 100%;
+            }
+            #formControl {
+              position: relative;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/*======= MEDIA QUERIES (MEDIUM DEVICES) =======*/
+@media screen and (max-width: 670px) {
+  .post_edit {
+    .sections {
+      .section_2 {
+        .lower_section_2 {
+          .btn_buttom {
+            position: relative;
+            margin-top: 40px;
+            button {
+              width: 220px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

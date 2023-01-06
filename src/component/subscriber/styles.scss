@@ -1,0 +1,52 @@
+.subscriber {
+  padding: 20px;
+  .subscriber_box {
+    h3 {
+      color: var(--color-ash);
+    }
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    background-color: #fff;
+    padding: 20px;
+    .table {
+      height: 380px;
+      .tableCell {
+        .deleteButton {
+          padding: 2px 5px;
+          border-radius: 5px;
+          color: crimson;
+          background: transparent;
+          border: 1px dotted rgba(220, 20, 60, 0.6);
+          cursor: pointer;
+        }
+      }
+    }
+
+    .form_box {
+      margin-top: 20px;
+      width: 100%;
+      input {
+        width: 50%;
+        border: 2px solid var(--color-light);
+        border-radius: 5px;
+        padding: 7px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+      .btn {
+        button {
+          background-color: var(--color-hover);
+          color: var(--color-white);
+          width: 100px;
+
+          padding: 8px;
+          border-radius: 5px;
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+}

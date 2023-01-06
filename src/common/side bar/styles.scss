@@ -1,0 +1,97 @@
+.side_bar {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background-color: var(--color-bg-variant);
+  transition: var(--transition);
+  z-index: 1000;
+  // overflow: hidden;
+
+  .side_bar_box {
+    ul {
+      position: absolute;
+      top: 0;
+      left: -40px;
+      width: 100%;
+      li {
+        list-style: none;
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+      li:hover {
+        background-color: var(--color-hover);
+      }
+
+      li {
+        .title {
+          opacity: 0;
+          display: none;
+          margin-left: 5px;
+          padding: 5px;
+        }
+      }
+      li:hover .title {
+        opacity: 1;
+        // display: contents;
+        display: flex;
+        background: rgba(0, 0, 0, 0.6);
+        color: var(--color-white);
+        font-weight: 600;
+        border-radius: 5px;
+      }
+      li:nth-child(1) {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        .title {
+          position: relative;
+          bottom: 20px;
+        }
+        a:hover .title {
+          opacity: 0;
+        }
+      }
+      li:nth-child(1):hover {
+        background-color: transparent;
+      }
+      a {
+        text-decoration: none;
+        position: relative;
+        display: block;
+        width: 100%;
+        display: flex;
+        color: var(--color-white);
+        .icon {
+          position: relative;
+          display: block;
+          min-width: 60px;
+          height: 60px;
+          line-height: 60px;
+          text-align: center;
+          .fa-solid {
+            font-size: 24px;
+          }
+        }
+
+        .title {
+          position: relative;
+          display: block;
+          padding: 0 10px;
+          top: 17px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          line-height: 60px;
+          white-space: nowrap;
+          opacity: 0;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+.side_bar.active {
+  width: 60px;
+}

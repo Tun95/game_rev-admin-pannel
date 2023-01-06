@@ -1,0 +1,33 @@
+.container_flex {
+  .main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+
+    transition: var(--transition);
+    .post_user {
+      display: grid;
+      grid-template-columns: 60% 38.3%;
+      padding: 0px 20px;
+      margin-bottom: 20px;
+      gap: 20px;
+    }
+  }
+  .main.active {
+    width: calc(100% - 60px);
+    left: 60px;
+  }
+}
+
+/*======= MEDIA QUERIES (MEDIUM DEVICES) =======*/
+@media screen and (max-width: 1024px) {
+  .container_flex {
+    .main {
+      .post_user {
+        grid-template-columns: 100%;
+        gap: 10px;
+      }
+    }
+  }
+}

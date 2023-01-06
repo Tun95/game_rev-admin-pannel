@@ -1,0 +1,163 @@
+.user_list {
+  padding: 20px;
+  .user_list_box {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    height: 700px;
+    background-color: #fff;
+    h2 {
+      color: var(--color-ash);
+    }
+    .datatable {
+      height: 580px;
+      padding: 20px;
+
+      .cellWidthImg {
+        display: flex;
+        align-items: center;
+
+        .cellImg {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+          margin-right: 20px;
+        }
+      }
+      .cellWithStatus {
+        padding: 5px;
+        border-radius: 5px;
+
+        &.false {
+          color: green;
+          background-color: rgba(0, 128, 0, 0.151);
+        }
+
+        &.true {
+          color: red;
+          background-color: rgba(255, 0, 0, 0.2);
+        }
+      }
+      .cellAction {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        a {
+          text-decoration: none;
+        }
+        .blockButton {
+          padding: 2px 5px;
+          border-radius: 5px;
+          color: darkblue;
+          border: 1px dotted rgba(0, 0, 139, 0.596);
+          cursor: pointer;
+        }
+        .deleteButton {
+          padding: 2px 5px;
+          border-radius: 5px;
+          color: crimson;
+          border: 1px dotted rgba(220, 20, 60, 0.6);
+          cursor: pointer;
+        }
+        .viewButton {
+          padding: 2px 5px;
+          border-radius: 5px;
+          color: darkgreen;
+          border: 1px dotted rgba(0, 139, 0, 0.596);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.update_user {
+  padding: 20px;
+  .update_user_box {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    background-color: #fff;
+    padding: 20px;
+    h3 {
+      color: var(--color-primary);
+    }
+    .update_user_form {
+      justify-content: space-around;
+      .image {
+        -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+        box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+        padding: 20px;
+        border-radius: 10px;
+        i {
+          font-size: 30px;
+          color: var(--color-ash);
+          cursor: pointer;
+        }
+        img {
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+        }
+      }
+      .inner_form {
+        width: 50%;
+        .form_group {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 20px;
+          label {
+            font-weight: 600;
+            color: var(--color-ash);
+          }
+          input {
+            border: 2px solid var(--color-light);
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 16px;
+          }
+        }
+        .submit_btn {
+          button {
+            background-color: var(--color-hover);
+            color: var(--color-white);
+            width: 300px;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+/*======= MEDIA QUERIES (MEDIUM DEVICES) =======*/
+@media screen and (max-width: 740px) {
+  .update_user {
+    .update_user_box {
+      .update_user_form {
+        .inner_form {
+          .submit_btn {
+            button {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/*======= MEDIA QUERIES (MEDIUM DEVICES) =======*/
+@media screen and (max-width: 740px) {
+  .update_user {
+    .update_user_box {
+      .update_user_form {
+        display: grid;
+        grid-template-columns: 1fr;
+        .inner_form {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

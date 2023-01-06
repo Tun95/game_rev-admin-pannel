@@ -1,0 +1,131 @@
+.settings {
+  padding: 20px;
+  h3 {
+    color: var(--color-ash);
+  }
+  .settings_box {
+    -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
+    box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+    padding: 20px;
+    background-color: #fff;
+
+    .form_input {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+      .inner_form {
+        .form_group {
+          display: flex;
+          flex-direction: column;
+          h4 {
+            color: var(--color-ash);
+            margin-bottom: 0px;
+          }
+          .logo {
+            img {
+              width: 200px;
+              height: 50px;
+              margin: 3px 0px;
+            }
+            .fa-upload {
+              font-size: 22px;
+              color: var(--color-ash);
+              margin-left: 10px;
+              cursor: pointer;
+            }
+          }
+          .background_image {
+            img {
+              height: 200px;
+              width: 300px;
+            }
+          }
+          input {
+            padding: 5px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            border: 2px solid var(--color-light);
+          }
+        }
+        .inner_inner_form {
+          margin-top: 5px;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 10px;
+        }
+      }
+      .submit_bn {
+        margin-top: 20px;
+        button {
+          background-color: var(--color-hover);
+          color: var(--color-white);
+          width: 300px;
+          padding: 8px;
+          border-radius: 5px;
+          font-size: 18px;
+          font-weight: 600;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+/*======= MEDIA QUERIES (MEDIUM DEVICES) =======*/
+@media screen and (max-width: 1024px) {
+  .settings {
+    .settings_box {
+      .form_input {
+        .inner_form {
+          .inner_inner_form {
+            grid-template-columns: 1fr;
+            gap: 5px;
+            margin-top: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+/*======= MEDIA QUERIES (SMALL DEVICES) =======*/
+@media screen and (max-width: 414px) {
+  .settings {
+    .settings_box {
+      .form_input {
+        .inner_form {
+          input,
+          button {
+            width: 100%;
+          }
+          .form_group {
+            input {
+              width: 90%;
+            }
+            .background_image {
+              width: 100%;
+              img {
+                height: 160px;
+                width: 90%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+/*======= MEDIA QUERIES (SMALL DEVICES) =======*/
+@media screen and (max-width: 360px) {
+  .settings {
+    .settings_box {
+      .form_input {
+        .inner_form {
+          input,
+          button {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}
