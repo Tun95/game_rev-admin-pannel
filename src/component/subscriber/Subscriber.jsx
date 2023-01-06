@@ -131,7 +131,7 @@ function Subscriber() {
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    <TableCell className="tableCell">Category</TableCell>
+                    <TableCell className="tableCell">Emails</TableCell>
                     <TableCell className="tableCell">Date</TableCell>
                     <TableCell className="tableCell">Actions</TableCell>
                   </TableRow>
