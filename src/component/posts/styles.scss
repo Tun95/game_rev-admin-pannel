@@ -270,3 +270,37 @@
     }
   }
 }
+/*======= MEDIA QUERIES (SMALL DEVICES) =======*/
+@media screen and (max-width: 450px) {
+  .post_edit {
+    .sections {
+      .box_1 {
+        img {
+          width: 100%;
+          height: 260px;
+        }
+      }
+      .box_2 {
+        img {
+          width: 100%;
+          height: 110px;
+        }
+      }
+      .section_2 {
+        .lower_section_2 {
+          .grid_layout {
+            input {
+              height: 10px;
+              width: 92%;
+            }
+          }
+          .btn_buttom {
+            button {
+              width: 110%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
