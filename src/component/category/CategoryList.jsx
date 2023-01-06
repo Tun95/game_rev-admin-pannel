@@ -68,7 +68,7 @@ function CategoryList() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`${request}/api/category"`);
+        const { data } = await axios.get(`${request}/api/category`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
