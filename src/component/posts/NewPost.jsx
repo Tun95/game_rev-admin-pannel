@@ -15,6 +15,7 @@ import photo from "../../asset/photo.png";
 import banner1 from "../../asset/banner.png";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -65,7 +66,7 @@ function NewPost() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_CATEGORY_REQUEST" });
-        const { data } = await axios.get("/api/category");
+        const { data } = await axios.get(`${request}/api/category`);
         dispatch({ type: "FETCH_CATEGORY_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_CATEGORY_FAIL" });
@@ -97,7 +98,7 @@ function NewPost() {
       try {
         dispatch({ type: "CREATE_REQUEST" });
         const { data } = await axios.post(
-          "/api/posts",
+          `${request}/api/posts`,
           {
             title,
             slug,
@@ -134,7 +135,7 @@ function NewPost() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${request}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -163,7 +164,7 @@ function NewPost() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${request}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

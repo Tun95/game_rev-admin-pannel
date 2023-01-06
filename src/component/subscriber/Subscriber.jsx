@@ -17,6 +17,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Helmet } from "react-helmet-async";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -64,7 +65,7 @@ function Subscriber() {
     const fetchData = async () => {
       // dispatch({ type: "FETCH_SUBSCRIBER_REQUEST" });
       try {
-        const { data } = await axios.get("/api/subscribe");
+        const { data } = await axios.get(`${request}/api/subscribe`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (err) {
         dispatch({ type: "FETCH_FAIL", payload: getError(err) });
@@ -83,7 +84,7 @@ function Subscriber() {
   const deleteHandler = async (subscriber) => {
     try {
       dispatch({ type: "DELETE_REQUEST" });
-      await axios.delete(`/api/subscribe/${subscriber._id}`);
+      await axios.delete(`${request}/api/subscribe/${subscriber._id}`);
       dispatch({ type: "DELETE_SUCCESS" });
       toast.success("Deleted successfully", { position: "bottom-center" });
     } catch (error) {
@@ -100,7 +101,7 @@ function Subscriber() {
   const sendHandler = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/subscribe/message", {
+      const { data } = await axios.post(`${request}/api/subscribe/message`, {
         subject,
         message,
       });

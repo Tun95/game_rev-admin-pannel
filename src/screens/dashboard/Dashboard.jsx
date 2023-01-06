@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import axios from "axios";
 import { useEffect } from "react";
 import { useReducer } from "react";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -36,7 +37,7 @@ function Dashboard(props) {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get("/api/posts/summary");
+        const { data } = await axios.get(`${request}/api/posts/summary`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });

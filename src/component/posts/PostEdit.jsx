@@ -16,6 +16,7 @@ import photo from "../../asset/photo.png";
 import banner1 from "../../asset/banner.png";
 import LoadingBox from "../../utils/loading message/LoadingBox";
 import MessageBox from "../../utils/loading message/MessageBox";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -88,7 +89,9 @@ function PostEdit() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`/api/posts/admin/${postId}`);
+        const { data } = await axios.get(
+          `${request}/api/posts/admin/${postId}`
+        );
         setTitle(data.title);
         setSlug(data.slug);
         setCategory(data.category);
@@ -106,22 +109,6 @@ function PostEdit() {
     fetchData();
   }, [postId, userInfo]);
 
-  // //==============
-  // //FETCH CATEGORY
-  // //==============
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       dispatch({ type: "FETCH_CATEGORY_REQUEST" });
-  //       const { data } = await axios.get("/api/category/alphatical");
-  //       dispatch({ type: "FETCH_CATEGORY_SUCCESS", payload: data });
-  //     } catch (error) {
-  //       dispatch({ type: "FETCH_CATEGORY_FAIL" });
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-  // 
   //==============
   //FETCH CATEGORY HANDLER
   //==============
@@ -129,7 +116,7 @@ function PostEdit() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_CATEGORY_REQUEST" });
-        const { data } = await axios.get("/api/category/alphatical");
+        const { data } = await axios.get(`${request}/api/category/alphatical`);
         dispatch({ type: "FETCH_CATEGORY_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_CATEGORY_FAIL" });
@@ -163,7 +150,7 @@ function PostEdit() {
       try {
         dispatch({ type: "UPDATE_REQUEST" });
         await axios.put(
-          `/api/posts/${postId}`,
+          `${request}/api/posts/${postId}`,
           {
             id: postId,
             title,
@@ -201,7 +188,7 @@ function PostEdit() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${request}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -230,7 +217,7 @@ function PostEdit() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${request}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

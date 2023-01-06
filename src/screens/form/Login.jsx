@@ -9,6 +9,7 @@ import Axios from "axios";
 import { getError } from "../../utils/Utils";
 import { useEffect } from "react";
 import { Context } from "../../context/Context";
+import { request } from "../../base_url/Base_URL";
 
 function Login() {
     const navigate = useNavigate();
@@ -34,7 +35,7 @@ function Login() {
        });
      } else {
        try {
-         const { data } = await Axios.post("/api/users/login", {
+         const { data } = await Axios.post(`${request}/api/users/login`, {
            email,
            password,
          });

@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { getError } from "../../utils/Utils";
 import LoadingBox from "../../utils/loading message/LoadingBox";
 import MessageBox from "../../utils/loading message/MessageBox";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -33,6 +34,13 @@ const reducer = (state, action) => {
         loadingUpdate: false,
         successUpdate: false,
       };
+
+    case "UPLOAD_REQUEST":
+      return { ...state, loadingUpload: true };
+    case "UPLOAD_SUCCESS":
+      return { ...state, loadingUpload: false };
+    case "UPLOAD_FAIL":
+      return { ...state, loadingUpload: false };
 
     default:
       return state;
@@ -71,7 +79,7 @@ function Advert() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`/api/ads/${bannerId}`);
+        const { data } = await axios.get(`${request}/api/ads/${bannerId}`);
         setBannerOne(data.bannerOne);
         setBannerLinkOne(data.bannerLinkOne);
         setBannerTwo(data.bannerTwo);
@@ -103,7 +111,7 @@ function Advert() {
     e.preventDefault();
     try {
       dispatch({ type: "UPDATE_REQUEST" });
-      await axios.put(`/api/ads/${bannerId}`, {
+      await axios.put(`${request}/api/ads/${bannerId}`, {
         bannerOne,
         bannerLinkOne,
         bannerTwo,
@@ -136,7 +144,7 @@ function Advert() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${request}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -161,7 +169,7 @@ function Advert() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${request}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -186,7 +194,7 @@ function Advert() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${request}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -211,7 +219,7 @@ function Advert() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${request}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -236,7 +244,7 @@ function Advert() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${request}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

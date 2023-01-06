@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { Context } from "../../context/Context";
 import LoadingBox from "../../utils/loading message/LoadingBox";
 import MessageBox from "../../utils/loading message/MessageBox";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -87,7 +88,7 @@ function PostList() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get("/api/posts");
+        const { data } = await axios.get(`${request}/api/posts`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
@@ -106,7 +107,7 @@ function PostList() {
   const deleteHandler = async (post) => {
     try {
       dispatch({ type: "DELETE_REQUEST" });
-      await axios.delete(`/api/posts/${post.id}`, {
+      await axios.delete(`${request}/api/posts/${post.id}`, {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: "DELETE_SUCCESS" });

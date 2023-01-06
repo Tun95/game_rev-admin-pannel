@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import LoadingBox from "../../utils/loading message/LoadingBox";
 import MessageBox from "../../utils/loading message/MessageBox";
+import { request } from "../../base_url/Base_URL";
 
 const columns = [
   { field: "id", headerName: "ID", width: 220 },
@@ -125,7 +126,7 @@ function UserList() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get("/api/users");
+        const { data } = await axios.get(`${request}/api/users`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
@@ -147,7 +148,7 @@ function UserList() {
   const blockHandler = async (user) => {
     try {
       dispatch({ type: "BLOCK_REQUEST" });
-      await axios.put(`/api/users/block-user/${user.id}`);
+      await axios.put(`${request}/api/users/block-user/${user.id}`);
       dispatch({ type: "BLOCK_SUCCESS" });
     } catch (error) {
       console.log(error);
@@ -161,7 +162,7 @@ function UserList() {
   const unBlockHandler = async (user) => {
     try {
       dispatch({ type: "UNBLOCK_REQUEST" });
-      await axios.put(`/api/users/unblock-user/${user.id}`);
+      await axios.put(`${request}/api/users/unblock-user/${user.id}`);
       dispatch({ type: "UNBLOCK_SUCCESS" });
     } catch (error) {
       console.log(error);
@@ -175,7 +176,7 @@ function UserList() {
   const deleteHandler = async (user) => {
     try {
       dispatch({ type: "DELETE_REQUEST" });
-      await axios.delete(`/api/users/${user.id}`);
+      await axios.delete(`${request}/api/users/${user.id}`);
       dispatch({ type: "DELETE_SUCCESS" });
     } catch (error) {
       console.log(error);

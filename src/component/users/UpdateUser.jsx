@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useReducer, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { request } from "../../base_url/Base_URL";
 import { Context } from "../../context/Context";
 import LoadingBox from "../../utils/loading message/LoadingBox";
 import MessageBox from "../../utils/loading message/MessageBox";
@@ -71,9 +72,12 @@ function UpdateUser() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`/api/users/details/${userId}`, {
-          headers: { Authorization: `Bearer ${userInfo.token}` },
-        });
+        const { data } = await axios.get(
+          `${request}/api/users/details/${userId}`,
+          {
+            headers: { Authorization: `Bearer ${userInfo.token}` },
+          }
+        );
         setProfilePhoto(data.profilePhoto);
         setFirstName(data.firstName);
         setLastName(data.lastName);
@@ -99,7 +103,7 @@ function UpdateUser() {
     try {
       dispatch({ type: "UPDATE_REQUEST" });
       await axios.put(
-        `/api/users/${userId}`,
+        `${request}/api/users/${userId}`,
         {
           profilePhoto,
           firstName,
@@ -114,7 +118,7 @@ function UpdateUser() {
       toast.success("User details updated successfully", {
         position: "bottom-center",
       });
-			navigate("/users")
+      navigate("/users");
     } catch (err) {
       toast.error(getError(err), { position: "bottom-center" });
       dispatch({ type: "UPDATE_FAIL", payload: getError(err) });
@@ -130,7 +134,7 @@ function UpdateUser() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${request}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
