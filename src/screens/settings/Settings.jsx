@@ -14,7 +14,7 @@ import { Context } from "../../context/Context";
 import LoadingBox from "../../utils/loading message/LoadingBox";
 import MessageBox from "../../utils/loading message/MessageBox";
 import { Helmet } from "react-helmet-async";
-import { request } from "../../../../frontend/src/base_url/Base_URL";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
