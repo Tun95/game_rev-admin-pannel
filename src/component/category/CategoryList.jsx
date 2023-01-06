@@ -15,6 +15,7 @@ import { Context } from "../../context/Context";
 import LoadingBox from "../../utils/loading message/LoadingBox";
 import MessageBox from "../../utils/loading message/MessageBox";
 import { toast } from "react-toastify";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -67,7 +68,7 @@ function CategoryList() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get("/api/category");
+        const { data } = await axios.get(`${request}/api/category"`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
@@ -87,7 +88,7 @@ function CategoryList() {
   const deleteHandler = async (category) => {
     try {
       dispatch({ type: "DELETE_REQUEST" });
-      await axios.delete(`/api/category/${category._id}`, {
+      await axios.delete(`${request}/api/category/${category._id}`, {
         headers: { Authorization: `Bearer ${userInfo.token}` },
       });
       dispatch({ type: "DELETE_SUCCESS" });

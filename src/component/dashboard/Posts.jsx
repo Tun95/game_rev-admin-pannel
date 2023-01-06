@@ -10,6 +10,7 @@ import { useReducer } from "react";
 import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -43,7 +44,9 @@ function Posts() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const result = await axios.get(`/api/posts/home?query=${query}`);
+        const result = await axios.get(
+          `${request}/api/posts/home?query=${query}`
+        );
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
         window.scrollTo(0, 0);
       } catch (err) {

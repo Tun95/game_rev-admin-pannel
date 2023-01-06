@@ -10,6 +10,7 @@ import { Context } from "../../context/Context";
 import { toast } from "react-toastify";
 import { getError } from "../../utils/Utils";
 import { Helmet } from "react-helmet-async";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -61,7 +62,7 @@ function CategoryEdit() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`/api/category/${catId}`, {
+        const { data } = await axios.get(`${request}/api/category/${catId}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         setCategory(data.category);
@@ -86,7 +87,7 @@ function CategoryEdit() {
       try {
         dispatch({ type: "UPDATE_REQUEST" });
         await axios.put(
-          `/api/category/${catId}`,
+          `${request}/api/category/${catId}`,
           {
             category,
           },

@@ -9,6 +9,7 @@ import Paper from "@mui/material/Paper";
 import { useReducer } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -32,7 +33,7 @@ function Users() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get("/api/users");
+        const { data } = await axios.get(`${request}/api/users"`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });

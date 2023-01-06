@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import { Context } from "../../context/Context";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -49,7 +50,7 @@ function NewCategory() {
       try {
         dispatch({ type: "CREATE_REQUEST" });
         const { data } = await axios.post(
-          "/api/category",
+          `${request}/api/category`,
           {
             category,
           },

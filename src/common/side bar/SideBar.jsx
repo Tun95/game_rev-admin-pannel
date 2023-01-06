@@ -7,6 +7,7 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useReducer } from "react";
 import { Context } from "../../context/Context";
+import { request } from "../../base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -45,7 +46,7 @@ function SideBar(props) {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get("/api/settings");
+        const { data } = await axios.get(`${request}/api/settings`);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
@@ -62,7 +63,7 @@ function SideBar(props) {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_BANNER_REQUEST" });
-        const { data } = await axios.get("/api/ads");
+        const { data } = await axios.get(`${request}/api/ads`);
         dispatch({ type: "FETCH_BANNER_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_BANNER_FAIL" });
