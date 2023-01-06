@@ -14,6 +14,7 @@ import { Context } from "../../context/Context";
 import LoadingBox from "../../utils/loading message/LoadingBox";
 import MessageBox from "../../utils/loading message/MessageBox";
 import { Helmet } from "react-helmet-async";
+import { request } from "../../../../frontend/src/base_url/Base_URL";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -42,6 +43,7 @@ const reducer = (state, action) => {
   }
 };
 
+const URL = request;
 function Settings() {
   const [{ loading, error, successUpdate, settings }, dispatch] = useReducer(
     reducer,
@@ -81,7 +83,7 @@ function Settings() {
     const fetchData = async () => {
       try {
         dispatch({ type: "FETCH_REQUEST" });
-        const { data } = await axios.get(`/api/settings/${setId}`, {
+        const { data } = await axios.get(`${URL}/api/settings/${setId}`, {
           headers: { Authorization: `Bearer ${userInfo.token}` },
         });
         setAbout(data.about);
@@ -120,7 +122,7 @@ function Settings() {
     try {
       dispatch({ type: "UPDATE_REQUEST" });
       await axios.put(
-        `/api/settings/${setId}`,
+        `${URL}/api/settings/${setId}`,
         {
           about,
           privacy,
@@ -162,7 +164,7 @@ function Settings() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${URL}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -187,7 +189,7 @@ function Settings() {
     bodyFormData.append("file", file);
     try {
       dispatch({ type: "UPLOAD_REQUEST" });
-      const { data } = await axios.post("/api/upload", bodyFormData, {
+      const { data } = await axios.post(`${URL}/api/upload`, bodyFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
