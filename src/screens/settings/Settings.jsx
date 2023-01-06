@@ -76,9 +76,9 @@ function Settings() {
   const { state } = useContext(Context);
   const { userInfo } = state;
 
-  //==============
+  //===============
   //FETCH CATEGORY
-  //==============
+  //===============
   useEffect(() => {
     const fetchData = async () => {
       try {
