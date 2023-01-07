@@ -70,6 +70,15 @@ function Settings() {
   const [background, setBackground] = useState("");
   const [disqus, setDisqus] = useState("");
   const [dmca, setDmca] = useState("");
+  const [sideOne, setSideOne] = useState("");
+  const [sideTwo, setSideTwo] = useState("");
+  const [sideThree, setSideThree] = useState("");
+  const [sideFour, setSideFour] = useState("");
+  const [sideFive, setSideFive] = useState("");
+  const [sideSix, setSideSix] = useState("");
+  const [sideSeven, setSideSeven] = useState("");
+  const [sideEight, setSideEight] = useState("");
+
   const params = useParams();
   const { id: setId } = params;
 
@@ -102,6 +111,14 @@ function Settings() {
         setBackground(data.background);
         setDisqus(data.disqus);
         setDmca(data.dmca);
+        setSideOne(data.sideOne);
+        setSideTwo(data.sideTwo);
+        setSideThree(data.sideThree);
+        setSideFour(data.sideFour);
+        setSideFive(data.sideFive);
+        setSideSix(data.sideSix);
+        setSideSeven(data.sideSeven);
+        setSideEight(data.sideEight);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
@@ -140,6 +157,14 @@ function Settings() {
           background,
           disqus,
           dmca,
+          sideOne,
+          sideTwo,
+          sideThree,
+          sideFour,
+          sideFive,
+          sideSix,
+          sideSeven,
+          sideEight,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -423,6 +448,79 @@ function Settings() {
                         type="text"
                         value={disqus}
                         onChange={(e) => setDisqus(e.target.value)}
+                        placeholder="e.g. web-short"
+                      />
+                    </div>
+                    {/* SIDE BAR TITLE */}
+                    <div className="form_group">
+                      <small>Side Bar Title:</small>
+                      <input
+                        type="text"
+                        value={sideOne}
+                        onChange={(e) => setSideOne(e.target.value)}
+                        placeholder="e.g. web-short"
+                      />
+                    </div>{" "}
+                    <div className="form_group">
+                      <small>Side Bar Title:</small>
+                      <input
+                        type="text"
+                        value={sideTwo}
+                        onChange={(e) => setSideTwo(e.target.value)}
+                        placeholder="e.g. web-short"
+                      />
+                    </div>{" "}
+                    <div className="form_group">
+                      <small>Side Bar Title:</small>
+                      <input
+                        type="text"
+                        value={sideThree}
+                        onChange={(e) => setSideThree(e.target.value)}
+                        placeholder="e.g. web-short"
+                      />
+                    </div>{" "}
+                    <div className="form_group">
+                      <small>Side Bar Title:</small>
+                      <input
+                        type="text"
+                        value={sideFour}
+                        onChange={(e) => setSideFour(e.target.value)}
+                        placeholder="e.g. web-short"
+                      />
+                    </div>{" "}
+                    <div className="form_group">
+                      <small>Side Bar Title:</small>
+                      <input
+                        type="text"
+                        value={sideFive}
+                        onChange={(e) => setSideFive(e.target.value)}
+                        placeholder="e.g. web-short"
+                      />
+                    </div>{" "}
+                    <div className="form_group">
+                      <small>Side Bar Title:</small>
+                      <input
+                        type="text"
+                        value={sideSix}
+                        onChange={(e) => setSideSix(e.target.value)}
+                        placeholder="e.g. web-short"
+                      />
+                    </div>{" "}
+                    <div className="form_group">
+                      <small>Side Bar Title:</small>
+                      <input
+                        type="text"
+                        value={sideSeven}
+                        onChange={(e) => setSideSeven(e.target.value)}
+                        placeholder="e.g. web-short"
+                      />
+                    </div>{" "}
+                    <div className="form_group">
+                      <small>Side Bar Title:</small>
+                      <input
+                        type="text"
+                        value={sideEight}
+                        onChange={(e) => setSideEight(e.target.value)}
                         placeholder="e.g. web-short"
                       />
                     </div>
