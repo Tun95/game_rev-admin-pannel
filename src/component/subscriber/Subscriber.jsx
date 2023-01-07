@@ -107,6 +107,8 @@ function Subscriber() {
       });
       dispatch({ type: "SEND_SUCCESS", payload: data });
       toast.success("Email sent successfully", { position: "bottom-center" });
+      setSubject("");
+      setMessage("");
     } catch (err) {
       dispatch({ type: "SEND_FAIL" });
       toast.error(getError(err), { position: "bottom-center" });
