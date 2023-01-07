@@ -368,6 +368,7 @@ function PostEdit() {
                   <input
                     type="text"
                     id="short_desc"
+                    maxLength={132}
                     value={shortDesc}
                     onChange={(e) => setShortDesc(e.target.value)}
                     placeholder="short description on your post"
