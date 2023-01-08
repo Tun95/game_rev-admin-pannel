@@ -80,6 +80,7 @@ function Settings() {
   const [sideEight, setSideEight] = useState("");
   const [downloadBtn, setDownloadBtn] = useState("");
   const [buyBtn, setBuyBtn] = useState("");
+  const [webName, setWebName] = useState("");
 
   const params = useParams();
   const { id: setId } = params;
@@ -123,6 +124,7 @@ function Settings() {
         setSideEight(data.sideEight);
         setDownloadBtn(data.downloadBtn);
         setBuyBtn(data.buyBtn);
+        setWebName(data.webName);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
@@ -171,6 +173,7 @@ function Settings() {
           sideEight,
           downloadBtn,
           buyBtn,
+          webName,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -504,6 +507,13 @@ function Settings() {
                         value={buyBtn}
                         onChange={(e) => setBuyBtn(e.target.value)}
                         placeholder="https://res.cloudinary.com/dstj5eqcd/image/upload/v1672751981/banner_biet3l.jpg"
+                      />
+                      <small>Your Website Name here:</small>
+                      <input
+                        type="text"
+                        value={webName}
+                        onChange={(e) => setWebName(e.target.value)}
+                        placeholder="game reviews"
                       />
                     </div>
                   </div>

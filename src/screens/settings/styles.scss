@@ -90,6 +90,7 @@
             grid-template-columns: 1fr;
             gap: 5px;
             margin-top: 0px;
+            width: 330px;
           }
         }
       }
@@ -110,6 +111,21 @@
     }
   }
 }
+/*======= MEDIA QUERIES (SMALL DEVICES) =======*/
+@media screen and (max-width: 475px) {
+  .settings {
+    .settings_box {
+      .form_input {
+        .inner_form {
+          .inner_inner_form {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
 /*======= MEDIA QUERIES (SMALL DEVICES) =======*/
 @media screen and (max-width: 414px) {
   .settings {
