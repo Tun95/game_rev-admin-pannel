@@ -78,6 +78,8 @@ function Settings() {
   const [sideSix, setSideSix] = useState("");
   const [sideSeven, setSideSeven] = useState("");
   const [sideEight, setSideEight] = useState("");
+  const [downloadBtn, setDownloadBtn] = useState("");
+  const [buyBtn, setBuyBtn] = useState("");
 
   const params = useParams();
   const { id: setId } = params;
@@ -119,6 +121,8 @@ function Settings() {
         setSideSix(data.sideSix);
         setSideSeven(data.sideSeven);
         setSideEight(data.sideEight);
+        setDownloadBtn(data.downloadBtn);
+        setBuyBtn(data.buyBtn);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
@@ -165,6 +169,8 @@ function Settings() {
           sideSix,
           sideSeven,
           sideEight,
+          downloadBtn,
+          buyBtn,
         },
         {
           headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -224,6 +230,55 @@ function Settings() {
         position: "bottom-center",
       });
       setBackground(data.secure_url);
+    } catch (err) {
+      toast.error(getError(err), { position: "bottom-center" });
+      dispatch({ type: "UPLOAD_FAIL" });
+    }
+  };
+
+  //=================
+  // DOWNLOAD  UPLOAD
+  //=================
+  const uploadDownloadHandler = async (e) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("file", file);
+    try {
+      dispatch({ type: "UPLOAD_REQUEST" });
+      const { data } = await axios.post(`${URL}/api/upload`, bodyFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      dispatch({ type: "UPLOAD_SUCCESS" });
+      toast.success("Download Button uploaded successfully", {
+        position: "bottom-center",
+      });
+      setDownloadBtn(data.secure_url);
+    } catch (err) {
+      toast.error(getError(err), { position: "bottom-center" });
+      dispatch({ type: "UPLOAD_FAIL" });
+    }
+  };
+  //=================
+  // BUY UPLOAD
+  //=================
+  const uploadBuyHandler = async (e) => {
+    const file = e.target.files[0];
+    const bodyFormData = new FormData();
+    bodyFormData.append("file", file);
+    try {
+      dispatch({ type: "UPLOAD_REQUEST" });
+      const { data } = await axios.post(`${URL}/api/upload`, bodyFormData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      dispatch({ type: "UPLOAD_SUCCESS" });
+      toast.success("Buy Button uploaded successfully", {
+        position: "bottom-center",
+      });
+      setBuyBtn(data.secure_url);
     } catch (err) {
       toast.error(getError(err), { position: "bottom-center" });
       dispatch({ type: "UPLOAD_FAIL" });
@@ -345,55 +400,113 @@ function Settings() {
             </div>
             <div className="form_input ">
               <div className="inner_form">
-                <div className="form_group">
-                  <div className="hoe"></div>
-                  <h4>Your App Background: min(1280x720)</h4>
-                  <div className="logo background_image d_flex">
-                    <img src={background} alt="background" />
-                    <label htmlFor="link">
-                      <i
-                        onChange={uploadBackgroundHandler}
-                        className="fa-solid fa-upload"
-                      ></i>
-                      <input
-                        type="file"
-                        onChange={uploadBackgroundHandler}
-                        name=""
-                        id="link"
-                        style={{ display: "none" }}
-                      />
-                    </label>
-                  </div>
-                  <input
-                    type="text"
-                    value={background}
-                    onChange={(e) => setBackground(e.target.value)}
-                    placeholder="https://res.cloudinary.com/dstj5eqcd/image/upload/v1672751981/banner_biet3l.jpg"
-                  />
+                <div className="l_flex ">
+                  <div className="form_group">
+                    <div className="hoe"></div>
+                    <h4>Your App Background: min(1280x720)</h4>
+                    <div className="logo background_image d_flex">
+                      <img src={background} alt="background" />
+                      <label htmlFor="link">
+                        <i
+                          onChange={uploadBackgroundHandler}
+                          className="fa-solid fa-upload"
+                        ></i>
+                        <input
+                          type="file"
+                          onChange={uploadBackgroundHandler}
+                          name=""
+                          id="link"
+                          style={{ display: "none" }}
+                        />
+                      </label>
+                    </div>
+                    <input
+                      type="text"
+                      value={background}
+                      onChange={(e) => setBackground(e.target.value)}
+                      placeholder="https://res.cloudinary.com/dstj5eqcd/image/upload/v1672751981/banner_biet3l.jpg"
+                    />
 
-                  <small>Your App Logo here:</small>
-                  <div className="logo d_flex">
-                    <img src={logo} alt="" />
-                    <label htmlFor="link">
-                      <i
-                        onChange={uploadLogoHandler}
-                        className="fa-solid fa-upload"
-                      ></i>
-                      <input
-                        type="file"
-                        onChange={uploadLogoHandler}
-                        name=""
-                        id="link"
-                        style={{ display: "none" }}
-                      />
-                    </label>
+                    <small>Your App Logo here:</small>
+                    <div className="logo d_flex">
+                      <img src={logo} alt="" />
+                      <label htmlFor="link">
+                        <i
+                          onChange={uploadLogoHandler}
+                          className="fa-solid fa-upload"
+                        ></i>
+                        <input
+                          type="file"
+                          onChange={uploadLogoHandler}
+                          name=""
+                          id="link"
+                          style={{ display: "none" }}
+                        />
+                      </label>
+                    </div>
+                    <input
+                      type="text"
+                      value={logo}
+                      onChange={(e) => setLogo(e.target.value)}
+                      placeholder="https://res.cloudinary.com/dstj5eqcd/image/upload/v1672751981/banner_biet3l.jpg"
+                    />
                   </div>
-                  <input
-                    type="text"
-                    value={logo}
-                    onChange={(e) => setLogo(e.target.value)}
-                    placeholder="https://res.cloudinary.com/dstj5eqcd/image/upload/v1672751981/banner_biet3l.jpg"
-                  />
+                  <div className="down_buy_btn l_flex_left">
+                    <div className="form_group">
+                      <div className="hoe"></div>
+                      <h4>Your App Background: min(1280x720)</h4>
+                      <div className="logo background_image d_flex">
+                        <img
+                          src={downloadBtn}
+                          alt="background"
+                          className="download_btn"
+                        />
+                        <label htmlFor="download">
+                          <i
+                            onChange={uploadDownloadHandler}
+                            className="fa-solid fa-upload"
+                          ></i>
+                          <input
+                            type="file"
+                            onChange={uploadDownloadHandler}
+                            name=""
+                            id="download"
+                            style={{ display: "none" }}
+                          />
+                        </label>
+                      </div>
+                      <input
+                        type="text"
+                        value={downloadBtn}
+                        onChange={(e) => setDownloadBtn(e.target.value)}
+                        placeholder="https://res.cloudinary.com/dstj5eqcd/image/upload/v1672751981/banner_biet3l.jpg"
+                      />
+
+                      <small>Your App Logo here:</small>
+                      <div className="logo d_flex">
+                        <img src={buyBtn} alt="" className="buy_btn" />
+                        <label htmlFor="buy">
+                          <i
+                            onChange={uploadBuyHandler}
+                            className="fa-solid fa-upload"
+                          ></i>
+                          <input
+                            type="file"
+                            onChange={uploadBuyHandler}
+                            name=""
+                            id="buy"
+                            style={{ display: "none" }}
+                          />
+                        </label>
+                      </div>
+                      <input
+                        type="text"
+                        value={buyBtn}
+                        onChange={(e) => setBuyBtn(e.target.value)}
+                        placeholder="https://res.cloudinary.com/dstj5eqcd/image/upload/v1672751981/banner_biet3l.jpg"
+                      />
+                    </div>
+                  </div>
                 </div>
                 <div className="from_flex">
                   <div className="inner_inner_form">

@@ -13,6 +13,9 @@
     padding: 20px;
     background-color: #fff;
     .inner_form_box {
+      .google_ads {
+        margin-left: 20px;
+      }
       input {
         padding: 5px;
         width: 315px;
@@ -55,10 +58,26 @@
   }
 }
 /*======= MEDIA QUERIES (SMALL DEVICES) =======*/
+@media screen and (max-width: 818px) {
+  .advert {
+    .advert_box {
+      .inner_form_box {
+        .google_ads {
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+}
+/*======= MEDIA QUERIES (SMALL DEVICES) =======*/
 @media screen and (max-width: 560px) {
   .advert {
     .advert_box {
       .inner_form_box {
+        .google_ads,
+        .ppa_ads {
+          width: 100%;
+        }
         input {
           width: 95%;
         }

@@ -58,6 +58,7 @@ function NewPost() {
   const [shortDesc, setShortDesc] = useState("");
   const [description, setDescription] = useState("");
   const [downloadLink, setDownloadLink] = useState("");
+  const [buyLink, setBuyLink] = useState("");
 
   //==============
   //FETCH CATEGORY
@@ -109,6 +110,7 @@ function NewPost() {
             shortDesc,
             description,
             downloadLink,
+            buyLink,
           },
           {
             headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -337,6 +339,18 @@ function NewPost() {
                     value={downloadLink}
                     onChange={(e) => setDownloadLink(e.target.value)}
                     placeholder="App download link"
+                  />
+                </div>
+                <div className="grid_layout">
+                  <label htmlFor="download" className="top_input">
+                    App Buy Now Link
+                  </label>
+                  <input
+                    type="text"
+                    id="download"
+                    value={buyLink}
+                    onChange={(e) => setBuyLink(e.target.value)}
+                    placeholder="App buy now link"
                   />
                 </div>
                 <div className="grid_layout">

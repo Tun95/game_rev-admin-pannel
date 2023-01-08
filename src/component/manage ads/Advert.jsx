@@ -70,6 +70,8 @@ function Advert() {
   const [bannerLinkFive, setBannerLinkFive] = useState("");
   const [ppcOne, setPpcOne] = useState("");
   const [ppcTwo, setPpcTwo] = useState("");
+  const [clientId, setClientId] = useState("");
+  const [slot, setSlot] = useState("");
 
   //==============
   //FETCH CATEGORY
@@ -92,6 +94,8 @@ function Advert() {
         setBannerLinkFive(data.bannerLinkFive);
         setPpcOne(data.ppcOne);
         setPpcTwo(data.ppcTwo);
+        setClientId(data.clientId);
+        setSlot(data.slot);
         dispatch({ type: "FETCH_SUCCESS", payload: data });
       } catch (error) {
         dispatch({ type: "FETCH_FAIL" });
@@ -124,6 +128,8 @@ function Advert() {
         bannerLinkFive,
         ppcOne,
         ppcTwo,
+        clientId,
+        slot,
       });
       dispatch({ type: "UPDATE_SUCCESS" });
       toast.success("Ads updated successfully", {
@@ -272,33 +278,59 @@ function Advert() {
             <small className="alert_info">
               Always click on update all button to update all your changes
             </small>
-            <div className="ppa_ads">
-              <h3>Manage PPC(Pay Per Click) Ads:</h3>
-              <div className="input_form">
-                <div className="form_group">
-                  <small>Your PPC Link here:</small>
-                  <br />
-                  <input
-                    type="text"
-                    value={ppcOne}
-                    onChange={(e) => setPpcOne(e.target.value)}
-                    placeholder="your ppc link here"
-                  />
+            <div className="google_ppc l_flex">
+              <div className="ppa_ads">
+                <h3>Manage PPC(Pay Per Click) Ads:</h3>
+                <div className="input_form">
+                  <div className="form_group">
+                    <small>Your PPC Link here:</small>
+                    <br />
+                    <input
+                      type="text"
+                      value={ppcOne}
+                      onChange={(e) => setPpcOne(e.target.value)}
+                      placeholder="your ppc link here"
+                    />
+                  </div>
+                  <div className="form_group">
+                    <small>Your PPC Link here:</small>
+                    <br />
+                    <input
+                      type="text"
+                      value={ppcTwo}
+                      onChange={(e) => setPpcTwo(e.target.value)}
+                      placeholder="your ppc link here"
+                    />
+                  </div>
                 </div>
-                <div className="form_group">
-                  <small>Your PPC Link here:</small>
-                  <br />
-                  <input
-                    type="text"
-                    value={ppcTwo}
-                    onChange={(e) => setPpcTwo(e.target.value)}
-                    placeholder="your ppc link here"
-                  />
+              </div>
+              <div className="google_ads">
+                <h3>Manage Google Ads:</h3>
+                <div className="input_form">
+                  <div className="form_group">
+                    <small>Your Google Client Id here:</small>
+                    <br />
+                    <input
+                      type="text"
+                      value={clientId}
+                      onChange={(e) => setClientId(e.target.value)}
+                      placeholder="your google client id here"
+                    />
+                  </div>
+                  <div className="form_group">
+                    <small>Your Google Slot here:</small>
+                    <br />
+                    <input
+                      type="text"
+                      value={slot}
+                      onChange={(e) => setSlot(e.target.value)}
+                      placeholder="your google slot id"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
             <h3>Manage Banner Ads:</h3>
-
             <div className="inner_form l_flex">
               <div className="form_group">
                 <small>Banner:</small>
