@@ -457,7 +457,7 @@ function Settings() {
                   <div className="down_buy_btn l_flex_left">
                     <div className="form_group">
                       <div className="hoe"></div>
-                      <h4>Your App Background: min(1280x720)</h4>
+                      <h4>Your Download Button</h4>
                       <div className="logo background_image d_flex">
                         <img
                           src={downloadBtn}
@@ -485,7 +485,7 @@ function Settings() {
                         placeholder="https://res.cloudinary.com/dstj5eqcd/image/upload/v1672751981/banner_biet3l.jpg"
                       />
 
-                      <small>Your App Logo here:</small>
+                      <h4>Buy Button:</h4>
                       <div className="logo d_flex">
                         <img src={buyBtn} alt="" className="buy_btn" />
                         <label htmlFor="buy">
@@ -508,7 +508,7 @@ function Settings() {
                         onChange={(e) => setBuyBtn(e.target.value)}
                         placeholder="https://res.cloudinary.com/dstj5eqcd/image/upload/v1672751981/banner_biet3l.jpg"
                       />
-                      <small>Your Website Name here:</small>
+                      <h4>Your Website Name here:</h4>
                       <input
                         type="text"
                         value={webName}
