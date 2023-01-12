@@ -33,7 +33,7 @@ function Cards(props) {
       <div className="card">
         <div>
           <div className="numbers">{TotalViews}</div>
-          <div className="card_name">Daily Views</div>
+          <div className="card_name">Views</div>
         </div>
         <div className="icon_box">
           <i className="fa-solid fa-eye"></i>
@@ -60,7 +60,7 @@ function Cards(props) {
       <div className="card">
         <div>
           <div className="numbers">{TotalDownloads}</div>
-          <div className="card_name">Daily Downloads</div>
+          <div className="card_name">Downloads</div>
         </div>
         <div className="icon_box">
           <i className="fa-solid fa-cloud-arrow-down"></i>
