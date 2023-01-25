@@ -89,7 +89,7 @@ function Settings() {
   const { userInfo } = state;
 
   //===============
-  //FETCH CATEGORY
+  //FETCH SETTINGS
   //===============
   useEffect(() => {
     const fetchData = async () => {

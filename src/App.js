@@ -27,6 +27,7 @@ import PostComment from "./screens/posts/PostComment";
 import ProtectedRoute from "./protectedRoute/ProtectedRoute";
 import Subscribers from "./screens/subscribers/Subscribers";
 import Advertise from "./screens/manage ads/Advertise";
+import Register from "./screens/form/Register";
 
 function App() {
   const { state } = useContext(Context);
@@ -51,6 +52,7 @@ function App() {
                 }
               ></Route>
               <Route exact path="/login" element={<Login />}></Route>
+              <Route exact path="/register" element={<Register />}></Route>
 
               <Route
                 path="/posts"

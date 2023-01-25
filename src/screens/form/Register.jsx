@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { Context } from "../../context/Context";
 import { request } from "../../base_url/Base_URL";
 
-function Login() {
+function Register() {
   const navigate = useNavigate();
   const { search } = useLocation();
   const redirectUnUrl = new URLSearchParams(search).get("redirect");
@@ -20,8 +20,9 @@ function Login() {
   //=================
   // REGISTER
   //=================
-  const [displayName, setDisplayName] = useState();
-  const [email, setEmail] = useState();
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+	const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
   const { state, dispatch: ctxDispatch } = useContext(Context);
@@ -29,20 +30,21 @@ function Login() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (!displayName || !email || !password) {
+    if (!firstName || !lastName || !email || !password) {
       toast.error("displayName,email or password field is required", {
         position: "bottom-center",
       });
     } else {
       try {
-        const { data } = await Axios.post(`${request}/api/users/login`, {
-          displayName,
+        const { data } = await Axios.post(`${request}/api/users/register`, {
+          firstName,
+					lastName,
           email,
           password,
         });
         ctxDispatch({ type: "USER_SIGNIN", payload: data });
         localStorage.setItem("userInfo", JSON.stringify(data));
-        toast.success("Sign in successfully", { position: "bottom-center" });
+        toast.success("Sign up successfully", { position: "bottom-center" });
         navigate(redirect || "/");
       } catch (err) {
         toast.error(getError(err), {
@@ -64,14 +66,21 @@ function Login() {
       <div className="login_box">
         <form action="" onSubmit={submitHandler} className="form_input">
           <div className="form_header">
-            <h1>Login</h1>
+            <h1>Register</h1>
           </div>
           <div className="inner_form">
             <div className="form_group">
               <input
                 type="name"
-                onChange={(e) => setDisplayName(e.target.value)}
-                placeholder="display name"
+                onChange={(e) => setFirstName(e.target.value)}
+                placeholder="first name"
+              />
+            </div>
+            <div className="form_group">
+              <input
+                type="name"
+                onChange={(e) => setLastName(e.target.value)}
+                placeholder="Last name"
               />
             </div>
             <div className="form_group">
@@ -89,11 +98,13 @@ function Login() {
               />
             </div>
             <div className="form_group">
-              <button>Login</button>
+              <button>Register</button>
             </div>
             <small>
-              Email: admin@gmail.com <br />
-              Password: 123456
+              <span>Have an account?</span>
+              <Link style={{ marginLeft: "5px" }} to="/login">
+                Login
+              </Link>
             </small>
           </div>
         </form>
@@ -102,4 +113,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
