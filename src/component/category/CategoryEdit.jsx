@@ -40,6 +40,7 @@ const reducer = (state, action) => {
 };
 
 function CategoryEdit() {
+  //===========
   const [{ loading, error, post, categories }, dispatch] = useReducer(reducer, {
     loading: true,
     error: "",
